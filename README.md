@@ -1,198 +1,215 @@
-📘 Recipe Gallery — README
-📌 Overview
-This project is a simple React recipe gallery built with Vite. It displays a collection of recipes using a card‑based layout, including images, titles, and ingredient lists. The gallery is divided into two sections:
+# Recipe Gallery
 
-Recipe Gallery (recipes 1–3)
+## Overview
 
-Island Style Food (recipes 4–6)
+This project is a simple React recipe gallery built with Vite. It displays a collection of recipes using a card-based layout, including:
 
-The project demonstrates:
+- Images
+- Titles
+- Ingredient lists
 
-React components
+The gallery is divided into two sections:
 
-Array mapping
+- Recipe Gallery (Recipes 1–3)
+- Island Style Food (Recipes 4–6)
 
-JSX rendering
+## Concepts Demonstrated
 
-Responsive layout using CSS Grid
+- React components
+- Array mapping using `.map()`
+- JSX rendering
+- Responsive layout using CSS Grid
+- Static image handling via the `public/` folder
 
-Static image handling via the public/ folder
+## Tech Stack
 
-🛠️ Technologies Used
-React
+- React
+- Vite
+- JavaScript (ES6+)
+- CSS Grid / Flexbox
 
-Vite
+## Project Structure
 
-JavaScript (ES6+)
-
-CSS Grid / Flexbox
-
-Public folder static assets
-
-📂 Project Structure
-Code
+```
 recipe-gallery/
 │
 ├── public/
-│ └── gallery/
-│ ├── id1_spaghetti.jpg
-│ ├── id2_curry.jpg
-│ ├── id3_avocado.jfif
-│ ├── id4_adobo.jpg
-│ ├── id5\_\_dinuguan.jpg
-│ └── id6_kelaguen.webp
+│   └── gallery/
+│       ├── id1_spaghetti.jpg
+│       ├── id2_curry.jpg
+│       ├── id3_avocado.jfif
+│       ├── id4_adobo.jpg
+│       ├── id5_dinuguan.jpg
+│       └── id6_kelaguen.webp
 │
 ├── src/
-│ ├── RecipeGallery.jsx
-│ ├── RecipeGallery.css
-│ ├── App.jsx
-│ ├── App.css
-│ └── main.jsx
+│   ├── RecipeGallery.jsx
+│   ├── RecipeGallery.css
+│   ├── App.jsx
+│   ├── App.css
+│   └── main.jsx
 │
 └── README.md
-🚀 Running the Project
+```
 
-1. Install dependencies
-   Code
-   npm install
-2. Start the development server
-   Code
-   npm run dev
-3. Open in browser
-   Vite will display a local URL such as:
+## Running the Project
 
-Code
-http://localhost:5173/
-🖼️ Features
-✔ Recipe Cards
-Each recipe is displayed as a card containing:
+### Install Dependencies
 
-An image
+```bash
+npm install
+```
 
-A title
+### Start Development Server
 
-A list of ingredients
+```bash
+npm run dev
+```
 
-✔ Dynamic Rendering
-The component uses:
+Open the browser at the local URL provided by Vite (example: http://localhost:5173/).
 
-js
+## Features
+
+### Recipe Cards
+
+Each recipe card includes:
+
+- An image
+- A title
+- A list of ingredients
+
+### Dynamic Rendering
+
+Recipes are rendered using:
+
+```js
 recipes.map()
-to generate JSX for each recipe card.
+```
 
-✔ Unique Keys
 Each card uses:
 
-jsx
+```jsx
 key={recipe.id}
+```
+
 to satisfy React’s key requirement.
 
-✔ Responsive Layout
-The gallery uses CSS Grid to automatically adjust the number of columns based on screen size.
+### Responsive Layout
 
-✔ Organized Sections
+- Implemented using CSS Grid
+- Automatically adjusts the number of columns based on screen size
+- Cards stack vertically on smaller screens
+
+### Organized Sections
+
 Recipes are grouped into:
 
-Main Recipe Gallery (IDs 1–3)
+- Recipe Gallery (IDs 1–3)
+- Island Style Food (IDs 4–6)
 
-Island Style Food (IDs 4–6)
+## Styling
 
-🎨 Styling
-All layout and card styling is handled in:
+All layout and styling is handled in:
 
-Code
+```
 src/RecipeGallery.css
-This includes:
+```
 
-Grid layout
+Includes:
 
-Card borders and shadows
+- Grid layout
+- Card borders and shadows
+- Hover effects
+- Responsive behavior
 
-Hover effects
+## Image Handling
 
-Responsive behavior
+Images are stored in:
 
-📁 Image Handling
-All images are stored in:
-
-Code
+```
 public/gallery/
-and referenced directly in JSX:
+```
 
-jsx
+Referenced directly in JSX:
+
+```jsx
 image: "/gallery/id1_spaghetti.jpg"
+```
+
 This avoids bundler issues and keeps image paths simple.
 
-## 🧪 Test Cases
+## Test Cases
 
-The following test cases verify that the Recipe Gallery renders correctly and handles missing or unexpected data gracefully. Each test includes the input, expected behavior, and the observed result.
+### Normal Test Cases
 
----
+#### Test Case 1 — Rendering All Recipes
 
-### ✔ Normal Test Cases
+Input: Load the RecipeGallery component with the full recipes array (6 items).
 
-#### **Test Case 1 — Rendering All Recipes**
+Expected:
+- All 6 recipes appear
+- IDs 1–3 appear under Recipe Gallery
+- IDs 4–6 appear under Island Style Food
 
-- **Input:** Load the `RecipeGallery` component with the full `recipes` array (6 items).
-- **Expected Result:**
-  - All 6 recipes appear on the page.
-  - Recipes with IDs 1–3 appear under _Recipe Gallery_.
-  - Recipes with IDs 4–6 appear under _Island Style Food_.
-- **Actual Result:**  
-  ✔ All recipes render correctly in their respective sections.
+Result: All recipes render correctly.
 
-#### **Test Case 2 — Images Load Correctly**
+#### Test Case 2 — Images Load Correctly
 
-- **Input:** Each recipe card loads its image from `/gallery/...`.
-- **Expected Result:**
-  - All images display without broken links.
-  - Images scale properly within each card.
-- **Actual Result:**  
-  ✔ All images load successfully from the `public/gallery` folder.
+Input: Each recipe card loads its image from `/gallery/...`
 
-#### **Test Case 3 — Responsive Layout**
+Expected:
+- All images display without broken links
+- Images scale properly
 
-- **Input:** Resize the browser window (desktop → tablet → mobile).
-- **Expected Result:**
-  - CSS Grid adjusts the number of columns automatically.
-  - Cards stack vertically on small screens.
-- **Actual Result:**  
-  ✔ Layout responds smoothly and remains readable at all sizes.
+Result: All images load successfully.
 
----
+#### Test Case 3 — Responsive Layout
 
-### ✔ Edge Case Test Cases
+Input: Resize the browser window.
 
-#### **Edge Case 1 — Empty Recipe List**
+Expected:
+- Grid adjusts columns
+- Cards stack vertically on small screens
 
-- **Input:** Temporarily set `recipes = []`.
-- **Expected Result:**
-  - No recipe cards render.
-  - No errors appear in the console.
-- **Actual Result:**  
-  ✔ Component renders gracefully with no errors.
+Result: Layout responds smoothly.
 
-#### **Edge Case 2 — Missing Image Path**
+### Edge Case Test Cases
 
-- **Input:** Remove the `image` field from one recipe object.
-- **Expected Result:**
-  - The card still renders.
-  - The `<img>` tag shows a broken image icon, but the app does not crash.
-- **Actual Result:**  
-  ✔ Component continues rendering without crashing.
+#### Edge Case 1 — Empty Recipe List
 
-#### **Edge Case 3 — Missing Ingredients Array**
+Input:
 
-- **Input:** Remove the `ingredients` field from one recipe.
-- **Expected Result:**
-  - The gallery still renders.
-  - The affected card may show an empty or undefined list, but the UI remains stable.
-- **Actual Result:**  
-  ✔ Component renders without errors; only the affected card shows missing data.
+```js
+recipes = []
+```
 
----
+Expected:
+- No cards render
+- No console errors
 
-## 🎉 Summary
+Result: Component renders gracefully.
 
-All normal and edge test cases passed successfully.  
-The gallery handles expected inputs and gracefully tolerates missing or incomplete data.
+#### Edge Case 2 — Missing Image Path
+
+Input: Remove the `image` field from one recipe.
+
+Expected:
+- Card still renders
+- `<img>` shows a broken icon
+- App does not crash
+
+Result: Component continues rendering.
+
+#### Edge Case 3 — Missing Ingredients Array
+
+Input: Remove the `ingredients` field.
+
+Expected:
+- Gallery still renders
+- Affected card shows missing data
+
+Result: Component renders without errors.
+
+## Summary
+
+All normal and edge test cases passed successfully. The gallery handles expected inputs and gracefully tolerates missing or incomplete data.
